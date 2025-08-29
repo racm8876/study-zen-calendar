@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Study Calendar Design System - Focus & Productivity Optimized */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Clean and focused */
+    --background: 248 50% 98%;
+    --foreground: 224 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 224 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 224 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep focus blue */
+    --primary: 218 75% 35%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 218 60% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Study states */
+    --success: 142 70% 45%;        /* Completed studies - green */
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 70% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --warning: 36 90% 55%;         /* Notes - amber */
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 36 90% 95%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 262 65% 55%;         /* Time tracking - purple */
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 262 65% 95%;
+
+    --holiday: 0 75% 60%;          /* Holidays - red */
+    --holiday-foreground: 0 0% 100%;
+    --holiday-light: 0 75% 95%;
+
+    /* Secondary colors */
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 224 20% 25%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 224 15% 45%;
+
+    /* Past dates - muted */
+    --past: 220 10% 85%;
+    --past-foreground: 220 15% 60%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 20% 88%;
+    --input: 220 20% 95%;
+    --ring: 218 75% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Study-specific design tokens */
+    --gradient-focus: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--success-light)) 100%);
+    --shadow-calendar: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    --shadow-card: 0 2px 8px -2px hsl(var(--border) / 0.8);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +83,53 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 224 20% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 224 20% 10%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 224 20% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary - Lighter blue for dark mode */
+    --primary: 218 75% 65%;
+    --primary-foreground: 224 20% 8%;
+    --primary-light: 218 60% 25%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Study states - adjusted for dark mode */
+    --success: 142 70% 55%;
+    --success-foreground: 224 20% 8%;
+    --success-light: 142 70% 15%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --warning: 36 90% 65%;
+    --warning-foreground: 224 20% 8%;
+    --warning-light: 36 90% 15%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 262 65% 65%;
+    --accent-foreground: 224 20% 8%;
+    --accent-light: 262 65% 15%;
 
-    --destructive: 0 62.8% 30.6%;
+    --holiday: 0 75% 70%;
+    --holiday-foreground: 224 20% 8%;
+    --holiday-light: 0 75% 15%;
+
+    --secondary: 224 15% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 224 15% 12%;
+    --muted-foreground: 224 15% 65%;
+
+    --past: 224 10% 20%;
+    --past-foreground: 224 15% 50%;
+
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 224 20% 18%;
+    --input: 224 20% 15%;
+    --ring: 218 75% 65%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
