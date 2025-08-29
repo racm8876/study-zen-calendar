@@ -160,36 +160,42 @@ const StudyCalendar = () => {
   return (
     <div className="max-w-7xl mx-auto p-4 space-y-6">
       {/* Header */}
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <div className="text-center space-y-4 animate-fade-in">
+        <h1 className="text-5xl font-bold gradient-text animate-float">
           Study Zen Calendar
         </h1>
-        <p className="text-muted-foreground">Track your learning journey with notes, time, and progress</p>
+        <p className="text-muted-foreground text-lg">Track your learning journey with notes, time, and progress</p>
       </div>
 
-      {/* Stats Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardContent className="p-4">
-            <div className="text-sm text-muted-foreground">This Week</div>
-            <div className="text-2xl font-bold text-primary">{formatTime(weeklyMinutes)}</div>
+      {/* Enhanced Stats Bar */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="card-hover bg-gradient-to-br from-primary/5 to-primary-light/10 border-primary/20">
+          <CardContent className="p-6">
+            <div className="text-sm text-muted-foreground font-medium mb-2">This Week</div>
+            <div className="text-3xl font-bold gradient-text">{formatTime(weeklyMinutes)}</div>
+            <div className="w-full h-2 bg-muted rounded-full mt-3 overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-primary to-primary-dark rounded-full animate-scale-in" style={{ width: `${Math.min(100, (weeklyMinutes / 2800) * 100)}%` }} />
+            </div>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent className="p-4">
-            <div className="text-sm text-muted-foreground">This Month</div>
-            <div className="text-2xl font-bold text-accent">{formatTime(monthlyMinutes)}</div>
+        <Card className="card-hover bg-gradient-to-br from-accent/5 to-accent-light/10 border-accent/20">
+          <CardContent className="p-6">
+            <div className="text-sm text-muted-foreground font-medium mb-2">This Month</div>
+            <div className="text-3xl font-bold text-accent">{formatTime(monthlyMinutes)}</div>
+            <div className="w-full h-2 bg-muted rounded-full mt-3 overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-accent to-accent-glow rounded-full animate-scale-in" style={{ width: `${Math.min(100, (monthlyMinutes / 12000) * 100)}%` }} />
+            </div>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent className="p-4 flex justify-center gap-2">
-            <Button onClick={exportData} variant="outline" size="sm">
-              <Download size={16} className="mr-1" />
-              Export
+        <Card className="card-hover bg-gradient-to-br from-success/5 to-success-light/10 border-success/20">
+          <CardContent className="p-6 flex flex-col items-center justify-center gap-3">
+            <Button onClick={exportData} variant="outline" size="sm" className="w-full bg-gradient-to-r from-success-light/20 to-success-glow/10 border-success/30 hover:shadow-success-glow/50">
+              <Download size={16} className="mr-2" />
+              Export Data
             </Button>
-            <Button onClick={handleImport} variant="outline" size="sm">
-              <Upload size={16} className="mr-1" />
-              Import
+            <Button onClick={handleImport} variant="outline" size="sm" className="w-full bg-gradient-to-r from-warning-light/20 to-warning-glow/10 border-warning/30 hover:shadow-warning-glow/50">
+              <Upload size={16} className="mr-2" />
+              Import Data
             </Button>
           </CardContent>
         </Card>

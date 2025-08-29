@@ -6,64 +6,84 @@
 
 @layer base {
   :root {
-    /* Base colors - Clean and focused */
-    --background: 248 50% 98%;
-    --foreground: 224 20% 15%;
+    /* Base colors - Elegant and modern */
+    --background: 248 60% 99%;
+    --foreground: 224 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 224 20% 15%;
+    --card-foreground: 224 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 20% 15%;
+    --popover-foreground: 224 25% 12%;
 
-    /* Primary - Deep focus blue */
-    --primary: 218 75% 35%;
+    /* Primary - Modern blue with depth */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 218 60% 85%;
+    --primary-light: 217 91% 95%;
+    --primary-dark: 217 91% 45%;
 
-    /* Study states */
-    --success: 142 70% 45%;        /* Completed studies - green */
+    /* Study states - Vibrant and clear */
+    --success: 142 76% 36%;        /* Completed studies - emerald */
     --success-foreground: 0 0% 100%;
-    --success-light: 142 70% 92%;
+    --success-light: 142 76% 96%;
+    --success-glow: 142 76% 85%;
 
-    --warning: 36 90% 55%;         /* Notes - amber */
+    --warning: 43 96% 56%;         /* Notes - golden */
     --warning-foreground: 0 0% 100%;
-    --warning-light: 36 90% 95%;
+    --warning-light: 43 96% 96%;
+    --warning-glow: 43 96% 85%;
 
-    --accent: 262 65% 55%;         /* Time tracking - purple */
+    --accent: 262 83% 58%;         /* Time tracking - violet */
     --accent-foreground: 0 0% 100%;
-    --accent-light: 262 65% 95%;
+    --accent-light: 262 83% 96%;
+    --accent-glow: 262 83% 85%;
 
-    --holiday: 0 75% 60%;          /* Holidays - red */
+    --holiday: 0 84% 60%;          /* Holidays - coral */
     --holiday-foreground: 0 0% 100%;
-    --holiday-light: 0 75% 95%;
+    --holiday-light: 0 84% 96%;
+    --holiday-glow: 0 84% 85%;
 
-    /* Secondary colors */
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 224 20% 25%;
+    /* Secondary colors - Sophisticated neutrals */
+    --secondary: 220 20% 97%;
+    --secondary-foreground: 224 25% 20%;
 
-    --muted: 220 15% 94%;
-    --muted-foreground: 224 15% 45%;
+    --muted: 220 20% 95%;
+    --muted-foreground: 224 20% 45%;
 
-    /* Past dates - muted */
-    --past: 220 10% 85%;
-    --past-foreground: 220 15% 60%;
+    /* Past dates - Subtle and distinguished */
+    --past: 220 15% 88%;
+    --past-foreground: 220 20% 55%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 88%;
-    --input: 220 20% 95%;
-    --ring: 218 75% 35%;
+    --border: 220 25% 90%;
+    --input: 220 25% 96%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    /* Study-specific design tokens */
-    --gradient-focus: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-    --gradient-success: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--success-light)) 100%);
-    --shadow-calendar: 0 4px 20px -4px hsl(var(--primary) / 0.15);
-    --shadow-card: 0 2px 8px -2px hsl(var(--border) / 0.8);
+    /* Enhanced design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--success)) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(220 25% 99%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--success-glow)) 100%);
+    --gradient-warning: linear-gradient(135deg, hsl(var(--warning)) 0%, hsl(var(--warning-glow)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-glow)) 100%);
+    --gradient-holiday: linear-gradient(135deg, hsl(var(--holiday)) 0%, hsl(var(--holiday-glow)) 100%);
+    
+    /* Enhanced shadows */
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.05), 0 4px 16px hsl(var(--primary) / 0.12);
+    --shadow-success: 0 0 0 1px hsl(var(--success) / 0.05), 0 4px 16px hsl(var(--success) / 0.12);
+    --shadow-calendar: 0 8px 32px -8px hsl(var(--primary) / 0.2);
+    
+    /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -83,52 +103,57 @@
   }
 
   .dark {
-    --background: 224 20% 8%;
-    --foreground: 0 0% 95%;
+    --background: 224 25% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 224 20% 10%;
-    --card-foreground: 0 0% 95%;
+    --card: 224 25% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 224 20% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 224 25% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Primary - Lighter blue for dark mode */
-    --primary: 218 75% 65%;
-    --primary-foreground: 224 20% 8%;
-    --primary-light: 218 60% 25%;
+    /* Primary - Luminous blue for dark mode */
+    --primary: 217 91% 70%;
+    --primary-foreground: 224 25% 6%;
+    --primary-light: 217 91% 20%;
+    --primary-dark: 217 91% 85%;
 
-    /* Study states - adjusted for dark mode */
-    --success: 142 70% 55%;
-    --success-foreground: 224 20% 8%;
-    --success-light: 142 70% 15%;
+    /* Study states - Enhanced for dark mode */
+    --success: 142 76% 50%;
+    --success-foreground: 224 25% 6%;
+    --success-light: 142 76% 12%;
+    --success-glow: 142 76% 25%;
 
-    --warning: 36 90% 65%;
-    --warning-foreground: 224 20% 8%;
-    --warning-light: 36 90% 15%;
+    --warning: 43 96% 65%;
+    --warning-foreground: 224 25% 6%;
+    --warning-light: 43 96% 12%;
+    --warning-glow: 43 96% 25%;
 
-    --accent: 262 65% 65%;
-    --accent-foreground: 224 20% 8%;
-    --accent-light: 262 65% 15%;
+    --accent: 262 83% 70%;
+    --accent-foreground: 224 25% 6%;
+    --accent-light: 262 83% 12%;
+    --accent-glow: 262 83% 25%;
 
-    --holiday: 0 75% 70%;
-    --holiday-foreground: 224 20% 8%;
-    --holiday-light: 0 75% 15%;
+    --holiday: 0 84% 70%;
+    --holiday-foreground: 224 25% 6%;
+    --holiday-light: 0 84% 12%;
+    --holiday-glow: 0 84% 25%;
 
-    --secondary: 224 15% 15%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 224 25% 12%;
+    --secondary-foreground: 0 0% 92%;
 
-    --muted: 224 15% 12%;
-    --muted-foreground: 224 15% 65%;
+    --muted: 224 25% 10%;
+    --muted-foreground: 224 20% 70%;
 
-    --past: 224 10% 20%;
-    --past-foreground: 224 15% 50%;
+    --past: 224 20% 18%;
+    --past-foreground: 224 15% 55%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84.2% 70%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 224 20% 18%;
-    --input: 224 20% 15%;
-    --ring: 218 75% 65%;
+    --border: 224 25% 15%;
+    --input: 224 25% 12%;
+    --ring: 217 91% 70%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -147,6 +172,65 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(248 60% 97%) 100%);
+    min-height: 100vh;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-success bg-clip-text text-transparent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+
+  .dark .glass-effect {
+    @apply bg-black/20 backdrop-blur-sm border border-white/10;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 5px hsl(var(--primary) / 0.2), 0 0 10px hsl(var(--primary) / 0.2), 0 0 15px hsl(var(--primary) / 0.2);
+    }
+    to {
+      box-shadow: 0 0 10px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.4), 0 0 30px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }

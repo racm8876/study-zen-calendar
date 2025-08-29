@@ -51,23 +51,28 @@ const CalendarDay = memo(({
   return (
     <div
       className={cn(
-        "relative min-h-[120px] p-2 border rounded-lg cursor-pointer transition-all duration-200",
-        "hover:shadow-md",
-        isPast && "bg-past text-past-foreground cursor-not-allowed opacity-60",
-        !isPast && "bg-card hover:bg-primary-light/20",
-        isToday && "ring-2 ring-primary ring-offset-2",
-        isSelected && "bg-primary-light/30",
-        dayData.holiday && "bg-holiday-light/30 border-holiday/20"
+        "relative min-h-[120px] p-3 border rounded-xl cursor-pointer transition-all duration-300 group",
+        "hover:shadow-lg hover:-translate-y-1 animate-scale-in",
+        "bg-gradient-to-br from-card to-card/80 backdrop-blur-sm",
+        isPast && "bg-gradient-to-br from-past/50 to-past/30 text-past-foreground cursor-not-allowed opacity-70",
+        !isPast && "hover:shadow-glow-md hover:bg-gradient-to-br hover:from-primary/5 hover:to-primary-light/10",
+        isToday && "ring-2 ring-primary shadow-glow-sm animate-pulse-glow",
+        isSelected && "bg-gradient-to-br from-primary-light/40 to-primary/10 shadow-glow-md",
+        dayData.holiday && "bg-gradient-to-br from-holiday-light/60 to-holiday-glow/30 border-holiday/30"
       )}
       onClick={handleClick}
       title={isPast ? "Past dates cannot be edited" : undefined}
     >
+      {/* Decorative glow effect */}
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
       {/* Day number */}
-      <div className="flex items-center justify-between mb-2">
+      <div className="relative flex items-center justify-between mb-3">
         <span className={cn(
-          "text-sm font-medium",
-          isToday && "text-primary font-bold",
-          isPast && "text-past-foreground"
+          "text-sm font-semibold transition-all duration-200",
+          isToday && "text-primary font-bold text-lg gradient-text animate-bounce-in",
+          isPast && "text-past-foreground",
+          !isPast && !isToday && "group-hover:text-primary"
         )}>
           {dayNumber}
         </span>
@@ -77,10 +82,11 @@ const CalendarDay = memo(({
           <button
             onClick={handleCrossClick}
             className={cn(
-              "w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all",
+              "w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all duration-300",
+              "hover:scale-110 active:scale-95",
               dayData.crossed 
-                ? "bg-success text-success-foreground border-success" 
-                : "border-muted-foreground/30 hover:border-success hover:bg-success-light/20"
+                ? "bg-gradient-to-r from-success to-success-glow text-success-foreground border-success shadow-success-glow animate-bounce-in" 
+                : "border-muted-foreground/40 hover:border-success hover:bg-gradient-to-r hover:from-success-light/20 hover:to-success-glow/20 hover:shadow-success-glow/50"
             )}
             title={dayData.crossed ? "Mark as not completed" : "Mark as completed"}
           >
@@ -91,40 +97,40 @@ const CalendarDay = memo(({
 
       {/* Holiday */}
       {dayData.holiday && (
-        <div className="text-xs text-holiday font-medium italic mb-1 leading-tight">
-          {dayData.holiday}
+        <div className="relative text-xs text-holiday font-semibold mb-2 p-2 bg-holiday-light/50 rounded-lg border border-holiday/20 animate-fade-in">
+          🎉 {dayData.holiday}
         </div>
       )}
 
       {/* Note preview */}
       {dayData.note && (
-        <div className="text-xs text-warning mb-1 leading-tight">
-          📝 {notePreview}
+        <div className="relative text-xs text-warning-foreground mb-2 p-2 bg-gradient-to-r from-warning-light/50 to-warning-glow/30 rounded-lg border border-warning/20 animate-slide-up">
+          📝 <span className="font-medium">{notePreview}</span>
         </div>
       )}
 
       {/* Time logged */}
       {dayData.minutes > 0 && (
-        <div className="text-xs text-accent font-medium">
+        <div className="relative text-xs text-accent-foreground font-semibold p-2 bg-gradient-to-r from-accent-light/50 to-accent-glow/30 rounded-lg border border-accent/20 animate-slide-up">
           ⏱️ {formatTime(dayData.minutes)}
         </div>
       )}
 
       {/* Timer running indicator */}
       {dayData.isTimerRunning && (
-        <div className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full animate-pulse" />
+        <div className="absolute top-2 right-2 w-3 h-3 bg-gradient-to-r from-accent to-accent-glow rounded-full animate-pulse-glow shadow-accent-glow" />
       )}
 
-      {/* Status indicators */}
-      <div className="absolute bottom-1 right-1 flex gap-1">
+      {/* Enhanced status indicators */}
+      <div className="absolute bottom-2 right-2 flex gap-1">
         {dayData.crossed && (
-          <div className="w-2 h-2 bg-success rounded-full" title="Completed" />
+          <div className="w-3 h-3 bg-gradient-to-r from-success to-success-glow rounded-full shadow-success-glow animate-bounce-in" title="Completed" />
         )}
         {dayData.note && (
-          <div className="w-2 h-2 bg-warning rounded-full" title="Has note" />
+          <div className="w-3 h-3 bg-gradient-to-r from-warning to-warning-glow rounded-full shadow-warning-glow animate-bounce-in" title="Has note" />
         )}
         {dayData.minutes > 0 && (
-          <div className="w-2 h-2 bg-accent rounded-full" title="Time logged" />
+          <div className="w-3 h-3 bg-gradient-to-r from-accent to-accent-glow rounded-full shadow-accent-glow animate-bounce-in" title="Time logged" />
         )}
       </div>
     </div>
